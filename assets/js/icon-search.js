@@ -57,21 +57,6 @@ class IconSelector extends React.Component {
 				{ showIcons ? tags : null }
 			</>
 		);
-		// if ( ! ClinicIcons.icons || ! this.props.text ) {
-		// 	return tags;
-		// }
-		// ClinicIcons.icons.filter( ( icon ) => {
-		// 	return icon.indexOf( this.props.text ) > -1;
-		// } ).map( ( icon ) => {
-		// 	let className = icon;
-		// 	if ( icon.match( /^dashicons/ ) ) {
-		// 		className = 'dashicons ' + icon;
-		// 	}
-		// 	tags.push( <Button key={ icon } isDefault={ true } onClick={ () => this.props.onSelect( icon ) } title={ icon }>
-		// 		<span className={ className } />
-		// 	</Button> );
-		// } );
-		return tags;
 	}
 }
 
