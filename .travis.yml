@@ -25,3 +25,14 @@ before_deploy:
 - echo 'Making deploy packages...'
 - bash ./bin/cleanup.sh
 - zip -r icon.zip ./
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: ipVrfCXPgUzcngy3CmOvA6uyCgGR0U46lRmE31dcpVHEmETONGDUpHF9sOi5BU1fovmQKYY0Fj/tlNiaRd4OovVoVFnUqOjiqMZx40oz3m8O3PkzE2C+Bs2Je0vXQaCf/D9p+j7UWWwM/dEPqC7jmggstof6XE0E/P8Idvn6eyryosD1sBP4NiMNsreVlcljN86jtftWwuZIL/MNxMalddQOr1CDtY4zyu7fFtmFFOhIUJSTKOu0oWoc4+IwNFHgwVH8xIx7xDLo+T6m9r/Lay5vdA0gIra0mANeAbeavIrJeexyH7niWjALHCivmk2jrRumtQfz/TFGisRB5G+NBT7bczaOfgk5jnRarVOqqXyo5aeEKvlqg2siHvQqA555Pl7Z3f2+Dr1z4nxW58Hljk9vM3c64a6lzCsRj7OTDDkrG1NFTsYka2EhYH60INhKFq3A0+fnk9o6jObWhqHsjt9dIGMnIZa7yTQXcurgMN7Nb8rrP1c7BqOkHmEYhabYNPWUAXg+sKwb5v/QTdN5pqWE1BpgkFagcJyYdwx1rOY8lsEK4NxwaylgI0+hpugT+bcPXHZvLn9a84abMy8JbIS22SBQVWclQJ8lAqBH4jzdanz3ToQYCcREyU76MSj2XVXj6+gvoOW7Hu8Cl+aV/X3unFLfWM+A6bg3gvaW9ow=
+  file: icon.zip
+  on:
+    repo: kuno1/icon
+    tags: true
+    php: "7.0"
+
