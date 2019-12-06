@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp default",
     "gulp": "gulp",
-    "jed": "po2json languages/$LOCALE.po languages/kicon-$LOCALE-kicon-common.json -f jed"
+    "jed": "po2json languages/$LOCALE.po languages/kicon-$LOCALE-kicon.json -f jed"
   },
   "repository": {
     "type": "git",

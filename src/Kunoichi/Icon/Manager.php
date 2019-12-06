@@ -4,6 +4,10 @@ namespace Kunoichi\Icon;
 
 
 use Hametuha\SingletonPattern\Singleton;
+use Kunoichi\Icon\IconSets\Dashicons;
+use Kunoichi\Icon\IconSets\FontAwesomeBrand;
+use Kunoichi\Icon\IconSets\FontAwesomeRegular;
+use Kunoichi\Icon\IconSets\FontAwesomeSolid;
 
 
 /**
@@ -21,6 +25,8 @@ class Manager extends Singleton {
 		add_action( 'wp_enqueue_scripts', [ $this, 'register_icons' ], 9999 );
 		// Register block if icons exist.
 		add_action( 'init', [ $this, 'register_block' ], 11 );
+		// Register inline icon if block exists.
+        add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_assets' ] );
 	}
 
 	/**
@@ -30,12 +36,16 @@ class Manager extends Singleton {
 		// Register Iconset holders.
 		list( $url, $version ) = $this->get_path_to_url( 'dist/js/icon-holder.js' );
 		wp_register_script( 'kicon', $url, [ 'wp-i18n' ], $version, true );
+        wp_set_script_translations( 'kicon', 'kicon', self::dir() . '/languages' );
 		// Register Icon search.
         list( $url, $version ) = $this->get_path_to_url( 'dist/js/icon-search.js' );
         wp_register_script( 'kicon-search', $url, [ 'wp-components', 'wp-element', 'kicon' ], $version, true );
 		// Register icon block.
 		list( $url, $version ) = $this->get_path_to_url( 'dist/js/icon-block.js' );
 		wp_register_script( 'kicon-block', $url, [ 'kicon', 'wp-block-editor', 'wp-blocks', 'kicon-search' ], $version, true );
+        // Register inline icon.
+        list( $url, $version ) = $this->get_path_to_url( 'dist/js/icon-inline.js' );
+        wp_register_script( 'kicon-inline', $url, [ 'kicon', 'wp-block-editor', 'wp-rich-text', 'kicon-search' ], $version, true );
         // Register Fontawesome 5
         list( $url, $version ) = $this->get_path_to_url( 'dist/css/all.min.css' );
         wp_register_style( 'fa5-all', $url, [], $version );
@@ -71,6 +81,16 @@ class Manager extends Singleton {
 		] );
 	}
 
+    /**
+     * Enqueue inline icon assets.
+     */
+	public function enqueue_block_editor_assets() {
+        if ( ! apply_filters( 'kunoichi_icon_availables', [] ) ) {
+	        return;
+        }
+        wp_enqueue_script( 'kicon-inline' );
+    }
+
 	/**
 	 * Get file url and version.
 	 *
@@ -99,8 +119,41 @@ class Manager extends Singleton {
 
 	/**
 	 * Register instance.
+     *
+     * @param array $default_icons
+     * @apram bool $regiter_comand
 	 */
-	public static function register(  ) {
+	public static function register( $default_icons = [], $register_command = true ) {
+        // Register commands.
+        if ( defined( 'WP_CLI' ) && WP_CLI ) {
+            \WP_CLI::add_command( Command::COMMAND_NAME, Command::class );
+        }
+        // Register default icons
+	    $default_icons = wp_parse_args( $default_icons, [
+	        'dashicons'   => true,
+            'fa5-solid'   => true,
+            'fa5-regular' => true,
+            'fa5-brand'   => true,
+        ] );
+	    foreach ( $default_icons as $key => $enabled ) {
+	        if ( ! $enabled ) {
+	            continue;
+            }
+	        switch ( $key ) {
+                case 'dashicons':
+                    new Dashicons();
+                    break;
+                case 'fa5-solid':
+                    new FontAwesomeSolid();
+                    break;
+                case 'fa5-regular':
+                    new FontAwesomeRegular();
+                    break;
+                case 'fa5-brand':
+                    new FontAwesomeBrand();
+                    break;
+            }
+        }
 		$instance = static::get_instance();
 	}
 }

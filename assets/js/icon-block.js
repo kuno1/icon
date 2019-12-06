@@ -10,13 +10,13 @@ const { IconSelector } = wp.kicon;
 
 registerBlockType( 'kunoichi/icon', {
 
-	title: __( 'Icon', 'clinics' ),
+	title: __( 'Icon', 'kicon' ),
 
 	icon: 'flag',
 
 	category: 'common',
 
-	description: __( 'Insert icon block.', 'clinics' ),
+	description: __( 'Insert icon block.', 'kicon' ),
 
 	keywords: [ 'icon' ],
 
@@ -105,12 +105,12 @@ registerBlockType( 'kunoichi/icon', {
 						<hr />
 						<IconSelector handler={ ( classNames ) => setAttributes( { classNames } ) } />
 					</PanelBody>
-					<PanelColorSettings title={ __( 'Appearance' ) } colorSettings={ colorSettings } disableCustomColors={ false } defaultOpen={ false }>
+					<PanelColorSettings title={ __( 'Appearance', 'kicon' ) } colorSettings={ colorSettings } disableCustomColors={ false } defaultOpen={ false }>
 						<hr />
-						<RangeControl label={ __( 'Size' ) } value={ attributes.size } icon="text-color"
+						<RangeControl label={ __( 'Size', 'kicon' ) } value={ attributes.size } icon="text-color"
 							min={ 10 } max={ 500 } onChange={ ( size ) => setAttributes( { size } ) } />
 						<hr />
-						<RadioControl label={ __( 'Style' ) }
+						<RadioControl label={ __( 'Style', 'kicon' ) }
 							selected={ attributes.style }
 							options={ [
 								{ label: __( 'Default' ), value: 'default' },
@@ -119,7 +119,7 @@ registerBlockType( 'kunoichi/icon', {
 							onChange={ ( style ) => setAttributes( { style } ) }
 						/>
 						<hr />
-						<p>{ __( 'Align' ) }</p>
+						<p>{ __( 'Align', 'kicon' ) }</p>
 						<AlignmentToolbar
 							value={ attributes.alignment }
 							onChange={ ( alignment ) => setAttributes( { alignment } ) } />

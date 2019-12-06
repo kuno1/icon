@@ -14,6 +14,11 @@ class IconSelector extends React.Component {
 			text: '',
 			show: false,
 		};
+		this.updateTimer = this.updateTimer.bind( this );
+	}
+
+	updateTimer( text ) {
+		this.setState( { text } );
 	}
 
 	render() {
@@ -46,13 +51,13 @@ class IconSelector extends React.Component {
 				</p>
 			) );
 		}
+
 		return (
 			<>
 				<TextControl
-					label={ __( 'Search Icon', 'clinics' ) }
+					label={ __( 'Search Icon', 'kicon' ) }
 					value={ text } placeholder={ __( 'Type to filter...', 'kicon' ) }
-					onChange={ ( newText ) => this.setState( { text: newText } ) }
-				/>
+					onChange={ this.updateTimer } />
 				<p>
 					<Button isPrimary={ ! show } isDefault={ show } onClick={ () => this.setState( { show: !show } ) }>
 						{ show ? __( 'Hide', 'kicon' ) : __( 'Show All', 'kicon' ) }
