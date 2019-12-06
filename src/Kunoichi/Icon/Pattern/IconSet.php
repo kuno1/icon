@@ -9,19 +9,19 @@ namespace Kunoichi\Icon\Pattern;
  * @package kicons
  */
 abstract class IconSet {
-	
+
 	protected $name = '';
-	
+
 	protected $parsed = false;
-	
+
 	protected $target = '';
-	
+
 	protected $icons = [];
-	
+
 	protected $font_family = '';
-	
+
 	protected $handle = '';
-	
+
 	/**
 	 * IconSet constructor.
 	 *
@@ -32,6 +32,9 @@ abstract class IconSet {
 			return;
 		}
 		$this->target = $target;
+		if ( ! $this->font_family ) {
+		    $this->font_family = $this->name;
+        }
 		// Register itself.
 		add_filter( 'kunoichi_icon_availables', [ $this, 'available_icons' ] );
 		// Extract all icons.
@@ -41,7 +44,7 @@ abstract class IconSet {
 			add_filter( 'kunoichi_icon_dependencies', [ $this, 'css_dependency_handle' ] );
 		}
 	}
-	
+
 	/**
 	 * Register available icons.
 	 *
@@ -51,14 +54,14 @@ abstract class IconSet {
 		$icons[ $this->name ] = $this->font_family;
 		return $icons;
 	}
-	
+
 	/**
 	 * Get icon name and gryph.
 	 *
 	 * @return array Array of [ 'name' => 'icon-name', 'gryph' => '\f23', 'classes' => 'dashicons dashicons-no' ]
 	 */
 	abstract protected function get_icon_list();
-	
+
 	/**
 	 * Get icons list.
 	 *
@@ -75,7 +78,7 @@ abstract class IconSet {
 		];
 		return $icons;
 	}
-	
+
 	/**
 	 * Add CSS dependencies.
 	 *

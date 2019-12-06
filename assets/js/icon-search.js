@@ -25,13 +25,17 @@ class IconSelector extends React.Component {
 			if ( ! icons.hasOwnProperty( prop ) ) {
 				continue;
 			}
-			tags.push( <h4>{ prop }</h4> );
 			const iconSet = icons[ prop ];
+			const filtered = iconSet.icons.filter( ( icon ) => {
+				return ! text.length || ( -1 < icon.name.indexOf( text ) );
+			} );
+			if ( ! filtered.length ) {
+				continue;
+			}
+			tags.push( <h4>{ prop }</h4> );
 			tags.push( (
 				<p className="kicon-selector">
-					{ iconSet.icons.filter( ( icon ) => {
-						return ! text.length || ( -1 < icon.name.indexOf( text ) );
-					} ).map( ( icon ) => {
+					{ filtered.map( ( icon ) => {
 						return (
 							<Button className="kicon-selector-item" key={ icon.name } isDefault={ true } title={ icon.name } style={ { 'font-family': iconSet.font_family } }
 								onClick={ () => handler( icon.classes ) } >

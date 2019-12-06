@@ -36,13 +36,17 @@ class Manager extends Singleton {
 		// Register icon block.
 		list( $url, $version ) = $this->get_path_to_url( 'dist/js/icon-block.js' );
 		wp_register_script( 'kicon-block', $url, [ 'kicon', 'wp-block-editor', 'wp-blocks', 'kicon-search' ], $version, true );
+        // Register Fontawesome 5
+        list( $url, $version ) = $this->get_path_to_url( 'dist/css/all.min.css' );
+        wp_register_style( 'fa5-all', $url, [], $version );
         // Register Editor CSS.
         list( $url, $version ) = $this->get_path_to_url( 'dist/css/icons.css' );
         wp_register_style( 'kicon', $url, [], $version );
         list( $url, $version ) = $this->get_path_to_url( 'dist/css/icons-block.css' );
         wp_register_style( 'kicon-block', $url, [ 'kicon' ], $version );
         list( $url, $version ) = $this->get_path_to_url( 'dist/css/icons-block-editor.css' );
-        wp_register_style( 'kicon-block-editor', $url, [ 'kicon' ], $version );
+        wp_register_style( 'kicon-block-editor', $url, apply_filters( 'kunoichi_icon_dependencies', [ 'kicon' ] ), $version );
+
 	}
 
 	/**
@@ -74,7 +78,7 @@ class Manager extends Singleton {
 	 * @return string[]
 	 */
 	public function get_path_to_url( $rel_path ) {
-		$base_dir = dirname( dirname( dirname( __DIR__ ) ) );
+	    $base_dir = self::dir();
 		$abs_path = $base_dir . '/' . ltrim( $rel_path, '/' );
 		$url = str_replace( ABSPATH, home_url( '/' ), $abs_path );
 		$version = null;
@@ -83,6 +87,15 @@ class Manager extends Singleton {
 		}
 		return [ $url, $version ];
 	}
+
+    /**
+     * Get root directory.
+     *
+     * @return string
+     */
+	public static function dir() {
+        return dirname( dirname( dirname( __DIR__ ) ) );
+    }
 
 	/**
 	 * Register instance.

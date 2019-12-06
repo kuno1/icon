@@ -10,9 +10,9 @@ use cli\Table;
  * @package kicon
  */
 class Command extends \WP_CLI_Command {
-	
+
 	const COMMAND_NAME = 'icons';
-	
+
 	/**
 	 * List available command names.
 	 *
@@ -24,13 +24,13 @@ class Command extends \WP_CLI_Command {
 			\WP_CLI::error( __( 'No icon set found.', 'kicon' ) );
 		}
 		$table = new Table();
-		$table->setHeaders( [ __( 'Icon Name', 'kicon' ), __( 'Font Famliy', 'kicon' ), __( 'Count', 'kicon' ) ] );
+		$table->setHeaders( [ __( 'Icon Name', 'kicon' ), __( 'Font Family', 'kicon' ), __( 'Count', 'kicon' ) ] );
 		foreach ( $icons as $name => $icon ) {
 			$table->addRow( [ $name, $icon['font_family'], count( $icon['icons'] ) ] );
 		}
 		$table->display();
 	}
-	
+
 	/**
 	 * Display all icons.
 	 *
@@ -49,14 +49,14 @@ class Command extends \WP_CLI_Command {
 		$count    = count( $icon_set['icons'] );
 		\WP_CLI::line( sprintf( __( '%s has %s.', 'kicon' ), $icon_name, sprintf( _n( '%d icon', '%d icons', $count, 'kicon' ), $count ) ) );
 		$table = new Table();
-		$table->setHeaders( [ __( 'Name', 'kicon' ), __( 'Class Name', 'kicon' ), __( 'Gryph', 'kicon' ) ] );
+		$table->setHeaders( [ __( 'Name', 'kicon' ), __( 'Class Name', 'kicon' ), __( 'Glyph', 'kicon' ) ] );
 		foreach ( $icon_set['icons'] as $icon ) {
 			if ( $term && false === strpos( $icon['name'], $term ) ) {
 				continue;
 			}
-			$table->addRow( [ $icon['name'], $icon['classes'], $icon['gryph'] ] );
+			$table->addRow( [ $icon['name'], $icon['classes'], $icon['glyph'] ] );
 		}
 		$table->display();
 	}
-	
+
 }

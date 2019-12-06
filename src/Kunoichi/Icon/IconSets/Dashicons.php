@@ -11,20 +11,18 @@ use Kunoichi\Icon\Pattern\IconSet;
  * @package kicons
  */
 class Dashicons extends IconSet {
-	
+
 	protected $name = 'Dashicons';
-	
-	protected $font_family = 'Dashicons';
-	
+
 	protected $handle = 'dashicons';
-	
+
 	public function __construct( $target = '' ) {
 		if ( ! $target ) {
 			$target = ABSPATH . 'wp-includes/css/dashicons.min.css';
 		}
 		parent::__construct( $target );
 	}
-	
+
 	/**
 	 * Parse dashicons
 	 *
@@ -41,7 +39,7 @@ class Dashicons extends IconSet {
 				$icons[] = [
 					'name'    => $class,
 					'classes' => 'dashicons dashicons-' . $class,
-					'gryph'   => $gryph,
+					'glyph'   => $gryph,
 				];
 			}
 		}
