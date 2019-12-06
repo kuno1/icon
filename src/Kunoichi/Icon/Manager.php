@@ -18,6 +18,8 @@ use Kunoichi\Icon\IconSets\FontAwesomeSolid;
 class Manager extends Singleton {
 
 	protected function init() {
+	    // Load translations.
+        load_textdomain( 'kicon', self::dir() . sprintf( '/languages/%s.mo', get_user_locale() ) );
 		// Register all assets.
 		add_action( 'init', [ $this, 'register_assets' ] );
 		// Register icon parser if kicon is enqueued.
@@ -115,6 +117,24 @@ class Manager extends Singleton {
      */
 	public static function dir() {
         return dirname( dirname( dirname( __DIR__ ) ) );
+    }
+
+    /**
+     * Get list of available icons.
+     *
+     * @return array
+     */
+    public static function availables() {
+	    return apply_filters( 'kunoichi_icon_availables', [] );
+    }
+
+    /**
+     * Get icon list.
+     *
+     * @return array
+     */
+    public static function icon_list() {
+        return apply_filters( 'kunoichi_icon_list', [] );
     }
 
 	/**

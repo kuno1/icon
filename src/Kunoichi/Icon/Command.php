@@ -19,7 +19,7 @@ class Command extends \WP_CLI_Command {
 	 * @param array $args
 	 */
 	public function availables( $args ) {
-		$icons = apply_filters( 'kunoichi_icon_list', [] );
+		$icons = Manager::icon_list();
 		if ( ! $icons ) {
 			\WP_CLI::error( __( 'No icon set found.', 'kicon' ) );
 		}
