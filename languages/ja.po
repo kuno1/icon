@@ -1,0 +1,119 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2019-12-06 19:22+0900\n"
+"PO-Revision-Date: 2019-12-06 19:25+0900\n"
+"Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/Kunoichi/Icon/Command.php:24 src/Kunoichi/Icon/Command.php:46
+msgid "No icon set found."
+msgstr "アイコンセットが見つかりません。"
+
+#: src/Kunoichi/Icon/Command.php:27
+msgid "Icon Name"
+msgstr "アイコン名"
+
+#: src/Kunoichi/Icon/Command.php:27
+msgid "Font Family"
+msgstr "フォントファミリー"
+
+#: src/Kunoichi/Icon/Command.php:27
+msgid "Count"
+msgstr "数"
+
+#: src/Kunoichi/Icon/Command.php:50
+#, php-format
+msgid "%s has %s."
+msgstr "%sは%sあります。"
+
+#: src/Kunoichi/Icon/Command.php:52
+msgid "Name"
+msgstr "名前"
+
+#: src/Kunoichi/Icon/Command.php:52
+msgid "Class Name"
+msgstr "クラス名"
+
+#: src/Kunoichi/Icon/Command.php:52
+msgid "Glyph"
+msgstr "グリフ"
+
+#: assets/js/icon-block.js:13 assets/js/icon-inline.js:90
+msgid "Icon"
+msgstr "アイコン"
+
+#: assets/js/icon-block.js:19
+msgid "Insert icon block."
+msgstr "アイコンブロックを挿入します。"
+
+#: assets/js/icon-block.js:74
+msgid "Icon Color"
+msgstr "アイコンの色"
+
+#: assets/js/icon-block.js:84
+msgid "Background Color"
+msgstr "背景色"
+
+#: assets/js/icon-block.js:102
+msgid "Icon Type"
+msgstr "アイコンの種類"
+
+#: assets/js/icon-block.js:103
+msgid "Current Class"
+msgstr "現在のクラス"
+
+#: assets/js/icon-block.js:108
+msgid "Appearance"
+msgstr "外観"
+
+#: assets/js/icon-block.js:110
+msgid "Size"
+msgstr "サイズ"
+
+#: assets/js/icon-block.js:113
+msgid "Style"
+msgstr "スタイル"
+
+#: assets/js/icon-block.js:116
+msgid "Default"
+msgstr "デフォルト"
+
+#: assets/js/icon-block.js:117
+msgid "Outline"
+msgstr "アウトライン"
+
+#: assets/js/icon-block.js:122
+msgid "Align"
+msgstr "テキスト寄せ"
+
+#: assets/js/icon-inline.js:12
+msgid "Inline Icon"
+msgstr "インラインアイコン"
+
+#: assets/js/icon-inline.js:71
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: assets/js/icon-search.js:58
+msgid "Search Icon"
+msgstr "アイコン検索"
+
+#: assets/js/icon-search.js:59
+msgid "Type to filter..."
+msgstr "キー入力で絞り込み…"
+
+#: assets/js/icon-search.js:63
+msgid "Hide"
+msgstr "隠す"
+
+#: assets/js/icon-search.js:63
+msgid "Show All"
+msgstr "すべて表示"
