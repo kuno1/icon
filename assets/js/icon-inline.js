@@ -6,7 +6,7 @@ const React = wp.element;
 const { registerFormatType, insertObject } = wp.richText;
 const { RichTextToolbarButton, BlockFormatControls } = wp.blockEditor;
 const { Modal, Button, Toolbar, ToolbarButton } = wp.components;
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { IconSelector } = wp.kicon;
 
 const title = __( 'Inline Icon', 'kicon' );

@@ -14,6 +14,7 @@ const notify = require( 'gulp-notify' );
 const objectFitImages = require( 'postcss-object-fit-images' );
 const postcss = require( 'gulp-postcss' );
 const sourcemaps = require( 'gulp-sourcemaps' );
+const stylelint = require( 'gulp-stylelint' );
 const rename = require( 'gulp-rename' );
 const autoprefixer = require( 'autoprefixer' );
 const webpack = require( 'webpack' );
@@ -22,6 +23,8 @@ const webpackConfig = require( './webpack.config.js' );
 const mergeStream = require( 'merge-stream' );
 
 sass.compiler = require( 'node-sass' );
+
+let doPlumber = true;
 
 /*
  * CSS tasks
@@ -58,6 +61,23 @@ gulp.task( 'css', gulp.series(
 	'css:autoprefix',
 ) );
 
+// Style lint.
+gulp.task( 'css:lint', () => {
+	let task = gulp.src( [ './assets/scss/**/*.scss' ] );
+	if ( doPlumber ) {
+		task = task.pipe( plumber() );
+	}
+	return task.pipe( stylelint( {
+		reporters: [
+			{
+				formatter: 'string',
+				console: true,
+			},
+		],
+	} ) );
+} );
+
+
 /*
  * Bundle JS
  */
@@ -83,11 +103,15 @@ gulp.task( 'js:bundle', function () {
 		.pipe( gulp.dest( './dist/js' ) );
 } );
 
-gulp.task( 'js:lint', () => gulp
-	.src( [ 'assets/js/**/*.js' ] )
-	.pipe( eslint( { useEslintrc: true } ) )
-	.pipe( eslint.format() )
-);
+gulp.task( 'js:lint', () => {
+	let task = gulp.src( [ 'assets/js/**/*.js' ] );
+	if ( doPlumber ) {
+		task = task.pipe( plumber() );
+	}
+	return task
+		.pipe( eslint( { useEslintrc: true } ) )
+		.pipe( eslint.format() );
+} );
 
 gulp.task( 'js', gulp.parallel(
 	'js:bundle',
@@ -137,6 +161,13 @@ gulp.task( 'svgmin', function() {
 		.pipe( gulp.dest( './dist/icon' ) );
 } );
 
+// Toggle plumber.
+gulp.task( 'noplumber', ( done ) => {
+	doPlumber = false;
+	done();
+} );
+
+
 /**
  * Default task
  */
@@ -150,3 +181,5 @@ gulp.task( 'watch', function() {
 	gulp.watch( 'assets/js/**/*.js', gulp.task( 'js' ) );
 	gulp.watch( 'assets/img/**/*', gulp.task( 'imagemin' ) );
 } );
+
+gulp.task( 'lint', gulp.series( 'noplumber', gulp.parallel( 'js:lint', 'css:lint' ) ) );

@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp default",
     "gulp": "gulp",
-    "jed": "po2json languages/$LOCALE.po languages/kicon-$LOCALE-kicon.json -f jed"
+    "jed": "po2json languages/$LOCALE.po languages/kicon-$LOCALE-kicon.json -f jed",
+    "lint": "gulp lint"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-sass-glob": "^1.1.0",
     "gulp-sourcemaps": "^2.6.5",
+    "gulp-stylelint": "^13.0.0",
     "gulp-svgmin": "^2.2.0",
     "imagemin": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",
@@ -53,6 +55,8 @@
     "merge-stream": "^2.0.0",
     "po2json": "^1.0.0-alpha",
     "postcss-object-fit-images": "^1.1.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-wordpress": "^17.0.0",
     "vinyl-named": "^1.1.0",
     "webpack": "^4.41.0",
     "webpack-stream": "^5.2.1"

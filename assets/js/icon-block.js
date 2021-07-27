@@ -103,7 +103,7 @@ registerBlockType( 'kunoichi/icon', {
 						<p>{ __( 'Current Class', 'kicon' ) }</p>
 						<code>{ attributes.classNames }</code>
 						<hr />
-						<IconSelector handler={ ( classNames ) => setAttributes( { classNames } ) } />
+						<IconSelector handler={ ( newClassNames ) => setAttributes( { classNames: newClassNames } ) } />
 					</PanelBody>
 					<PanelColorSettings title={ __( 'Appearance', 'kicon' ) } colorSettings={ colorSettings } disableCustomColors={ false } defaultOpen={ false }>
 						<hr />
