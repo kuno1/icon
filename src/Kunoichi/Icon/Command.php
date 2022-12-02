@@ -40,14 +40,15 @@ class Command extends \WP_CLI_Command {
 	 */
 	public function detail( $args, $assoc ) {
 		list( $icon_name ) = $args;
-		$term = empty( $assoc['term'] ) ? '' : $assoc['term'];
-		$icons = apply_filters( 'kunoichi_icon_list', [] );
+		$term              = empty( $assoc['term'] ) ? '' : $assoc['term'];
+		$icons             = apply_filters( 'kunoichi_icon_list', [] );
 		if ( ! $icons || ! isset( $icons[ $icon_name ] ) ) {
 			\WP_CLI::error( __( 'No icon set found.', 'kicon' ) );
 		}
 		$icon_set = $icons[ $icon_name ];
 		$count    = count( $icon_set['icons'] );
-		\WP_CLI::line( sprintf( __( '%s has %s.', 'kicon' ), $icon_name, sprintf( _n( '%d icon', '%d icons', $count, 'kicon' ), $count ) ) );
+		// translators: %1$s is icon name, %2$s is icon count. %d is number.
+		\WP_CLI::line( sprintf( __( '%1$s has %2$s.', 'kicon' ), $icon_name, sprintf( _n( '%d icon', '%d icons', $count, 'kicon' ), $count ) ) );
 		$table = new Table();
 		$table->setHeaders( [ __( 'Name', 'kicon' ), __( 'Class Name', 'kicon' ), __( 'Glyph', 'kicon' ) ] );
 		foreach ( $icon_set['icons'] as $icon ) {

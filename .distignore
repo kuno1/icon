@@ -21,6 +21,5 @@ bin
 tests
 phpcs.ruleset.xml
 phpunit.xml.dist
-render-faster.php.bak
-readme.txt.bak
+icon.php
 vendor

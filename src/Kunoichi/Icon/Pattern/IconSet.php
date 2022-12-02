@@ -33,8 +33,8 @@ abstract class IconSet {
 		}
 		$this->target = $target;
 		if ( ! $this->font_family ) {
-		    $this->font_family = $this->name;
-        }
+			$this->font_family = $this->name;
+		}
 		// Register itself.
 		add_filter( 'kunoichi_icon_availables', [ $this, 'available_icons' ] );
 		// Extract all icons.

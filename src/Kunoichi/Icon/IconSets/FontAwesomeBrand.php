@@ -13,9 +13,9 @@ use Kunoichi\Icon\Pattern\FontAwesome5;
  */
 class FontAwesomeBrand extends FontAwesome5 {
 
-    protected $name = 'Font Awesome 5 Brands';
+	protected $name = 'Font Awesome 5 Brands';
 
-    protected $font_group = 'fab';
+	protected $font_group = 'fab';
 
-    protected $default_svg = 'fa-brands-400.svg';
+	protected $default_svg = 'fa-brands-400.svg';
 }

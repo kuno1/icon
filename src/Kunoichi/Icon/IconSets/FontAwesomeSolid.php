@@ -13,11 +13,11 @@ use Kunoichi\Icon\Pattern\FontAwesome5;
  */
 class FontAwesomeSolid extends FontAwesome5 {
 
-    protected $name = 'Font Awesome 5 Solid';
+	protected $name = 'Font Awesome 5 Solid';
 
-    protected $font_family = 'Font Awesome 5 Free';
+	protected $font_family = 'Font Awesome 5 Free';
 
-    protected $font_group = 'fas';
+	protected $font_group = 'fas';
 
-    protected $default_svg = 'fa-solid-900.svg';
+	protected $default_svg = 'fa-solid-900.svg';
 }
