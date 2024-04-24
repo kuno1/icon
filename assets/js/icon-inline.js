@@ -67,7 +67,7 @@ class KunoichiInlineIcon extends React.Component {
 						<IconSelector handler={ this.classDefined } />
 						<hr />
 						<p style={ { textAlign: 'right' } } >
-							<Button isDefault onClick={ this.modalClose }>
+							<Button isSecondary onClick={ this.modalClose }>
 								{ __( 'Cancel' ) }
 							</Button>
 						</p>

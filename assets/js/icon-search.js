@@ -42,7 +42,7 @@ class IconSelector extends React.Component {
 				<p className="kicon-selector">
 					{ filtered.map( ( icon ) => {
 						return (
-							<Button className="kicon-selector-item" key={ icon.name } isDefault={ true } title={ icon.name } style={ { 'font-family': iconSet.font_family } }
+							<Button className="kicon-selector-item" key={ icon.name } isSecondary={ true } title={ icon.name } style={ { 'font-family': iconSet.font_family } }
 								onClick={ () => handler( icon.classes ) } >
 								<span className={ icon.classes + ' kicon kicon-selector-icon' }></span>
 							</Button>
@@ -59,7 +59,7 @@ class IconSelector extends React.Component {
 					value={ text } placeholder={ __( 'Type to filter...', 'kicon' ) }
 					onChange={ this.updateTimer } />
 				<p>
-					<Button isPrimary={ ! show } isDefault={ show } onClick={ () => this.setState( { show: !show } ) }>
+					<Button isPrimary={ ! show } isSecondary={ show } onClick={ () => this.setState( { show: !show } ) }>
 						{ show ? __( 'Hide', 'kicon' ) : __( 'Show All', 'kicon' ) }
 					</Button>
 				</p>
