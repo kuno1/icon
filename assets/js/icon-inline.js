@@ -49,7 +49,7 @@ class KunoichiInlineIcon extends React.Component {
 			<>
 				<BlockFormatControls>
 					<div className="editor-format-toolbar block-editor-format-toolbar">
-						<Toolbar>
+						<Toolbar label="Icon">
 							<ToolbarButton
 								icon={ 'flag' }
 								title={ title }
