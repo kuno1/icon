@@ -1,0 +1,23 @@
+# Files excluded from the Composer/GitHub distribution archive (`git archive`).
+# Keep runtime files only: src/, dist/, languages/, icon.php, composer.json, LICENSE, README.md.
+# `assets/` holds the un-built SCSS/JS sources, so it is dev-only (built output lives in dist/).
+
+/.distignore       export-ignore
+/.eslintrc         export-ignore
+/.stylelintrc.json export-ignore
+/.gitignore        export-ignore
+/.gitattributes    export-ignore
+/.github           export-ignore
+/.idea             export-ignore
+/.wp-env.json      export-ignore
+/assets            export-ignore
+/bin               export-ignore
+/tests             export-ignore
+/wordpress         export-ignore
+/gulpfile.js       export-ignore
+/webpack.config.js export-ignore
+/package.json      export-ignore
+/package-lock.json export-ignore
+/composer.lock     export-ignore
+/phpcs.ruleset.xml export-ignore
+/phpunit.xml.dist  export-ignore
