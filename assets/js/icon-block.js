@@ -14,7 +14,7 @@ registerBlockType( 'kunoichi/icon', {
 
 	icon: 'flag',
 
-	category: 'common',
+	category: 'media',
 
 	description: __( 'Insert icon block.', 'kicon' ),
 
