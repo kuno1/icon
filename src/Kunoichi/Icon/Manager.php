@@ -58,7 +58,6 @@ class Manager extends Singleton {
 		wp_register_style( 'kicon-block', $url, [ 'kicon' ], $version );
 		list( $url, $version ) = $this->get_path_to_url( 'assets/css/icons-block-editor.css' );
 		wp_register_style( 'kicon-block-editor', $url, apply_filters( 'kunoichi_icon_dependencies', [ 'kicon' ] ), $version );
-
 	}
 
 	/**
@@ -116,7 +115,7 @@ class Manager extends Singleton {
 	 * @return string
 	 */
 	public static function dir() {
-		return dirname( dirname( dirname( __DIR__ ) ) );
+		return dirname( __DIR__, 3 );
 	}
 
 	/**
