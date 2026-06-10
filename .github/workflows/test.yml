@@ -7,11 +7,49 @@ on:
 
 jobs:
 
-  phpcs:
+  lint:
     name: PHP Code Sniffer
+    uses: tarosky/workflows/.github/workflows/phpcs.yml@main
+    with:
+      version: 7.4
+
+  short-open-tag:
+    name: Short Open Tag Check
+    uses: tarosky/workflows/.github/workflows/php-short-open-tag.yml@main
+
+  assets:
+    name: Assets Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
+      - name: Install Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+
+      - name: Install NPM Packages
+        run: npm install
+
+      - name: Check JS & CSS syntax
+        run: npm run lint
+
+      - name: Build Succeed
+        run: npm run build
+
+  phpunit:
+    name: PHPUnit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+
+      - name: Install NPM Packages
+        run: npm install
 
       - name: Setup PHP with composer v2
         uses: shivammathur/setup-php@v2
@@ -22,69 +60,16 @@ jobs:
       - name: Install Composer Dependencies
         run: composer install --prefer-dist --no-progress
 
-      - name: Check PHP coding standard
-        run: composer lint
-
-  assets:
-    name: Assets Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      # TODO: ビルドツール近代化 (#12) 後に node 20 / npm run build へ更新する。
-      - name: Install Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '14'
-
-      - name: Install NPM Packages
-        run: npm install
-
-      - name: Check JS & CSS syntax
-        run: npm run lint
-
-  phpunit:
-    name: WordPress ${{ matrix.wp }} on PHP ${{ matrix.php }}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        php: [ '7.4', '8.0' ]
-        wp: [ '5.9', 'latest' ]
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping --host 127.0.0.1 --port 3306"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=10
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup PHP with composer v2
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          tools: composer
-
-      - name: Install Composer Dependencies
-        run: composer install --prefer-dist --no-progress
-
-      - name: Install WordPress
-        run: bash bin/install-wp-tests.sh wordpress root root 127.0.0.1:3306 ${{ matrix.wp }}
+      - name: Start wp-env
+        run: npx wp-env start
 
       - name: Run PHPUnit
-        run: composer test
+        run: npm test
 
   status-check:
     name: Status Check
     runs-on: ubuntu-latest
-    needs: [ phpcs, assets, phpunit ]
+    needs: [ lint, short-open-tag, assets, phpunit ]
     if: always()
     steps:
       - uses: re-actors/alls-green@release/v1

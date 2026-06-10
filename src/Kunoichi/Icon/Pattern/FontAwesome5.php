@@ -48,6 +48,4 @@ abstract class FontAwesome5 extends IconSet {
 		}
 		return $icons;
 	}
-
-
 }

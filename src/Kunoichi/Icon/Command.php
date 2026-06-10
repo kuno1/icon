@@ -59,5 +59,4 @@ class Command extends \WP_CLI_Command {
 		}
 		$table->display();
 	}
-
 }

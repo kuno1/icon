@@ -1,8 +1,17 @@
 # Files excluded from the Composer/GitHub distribution archive (`git archive`).
-# Keep runtime files only: src/, dist/, languages/, icon.php, composer.json, LICENSE, README.md.
-# `assets/` holds the un-built SCSS/JS sources, so it is dev-only (built output lives in dist/).
+# Runtime files kept in the dist: src/Kunoichi/ (PHP), assets/ (built JS/CSS/webfonts),
+# languages/, icon.php, composer.json, LICENSE, README.md.
+#
+# NOTE: src/ is the PSR-0 autoload root (src/Kunoichi/Icon), so we must NOT
+# export-ignore the whole /src tree -- only the asset *source* dirs below.
+# assets/ now holds BUILT output and IS distributed (built by `npm run build`).
 
+/src/js            export-ignore
+/src/scss          export-ignore
+/.babelrc          export-ignore
+/.browserslistrc   export-ignore
 /.distignore       export-ignore
+/.editorconfig     export-ignore
 /.eslintrc         export-ignore
 /.stylelintrc.json export-ignore
 /.gitignore        export-ignore
@@ -10,12 +19,10 @@
 /.github           export-ignore
 /.idea             export-ignore
 /.wp-env.json      export-ignore
-/assets            export-ignore
 /bin               export-ignore
 /tests             export-ignore
 /wordpress         export-ignore
-/gulpfile.js       export-ignore
-/webpack.config.js export-ignore
+/postcss.config.js export-ignore
 /package.json      export-ignore
 /package-lock.json export-ignore
 /composer.lock     export-ignore
