@@ -8,6 +8,8 @@
     "stop": "wp-env stop",
     "env": "wp-env",
     "cli": "wp-env run cli wp",
+    "cli:test": "wp-env run tests-cli wp",
+    "test": "RESULT=${PWD##*/} && wp-env run tests-cli ./wp-content/plugins/$RESULT/vendor/bin/phpunit -c ./wp-content/plugins/$RESULT/phpunit.xml.dist",
     "build:js": "grab-deps js src/js assets/js",
     "build:css": "sass ./src/scss/:./assets/css/ --style=compressed --no-source-map && postcss ./assets/css/*.css --use autoprefixer --replace --no-map",
     "copy": "bash bin/copy.sh",
