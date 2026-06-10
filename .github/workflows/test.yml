@@ -65,6 +65,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # bin/install-wp-tests.sh checks out the WP test suite via svn, which is
+      # no longer pre-installed on ubuntu-latest runners.
+      - name: Install Subversion
+        run: sudo apt-get update && sudo apt-get install -y subversion
+
       - name: Setup PHP with composer v2
         uses: shivammathur/setup-php@v2
         with:
