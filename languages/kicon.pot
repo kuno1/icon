@@ -53,7 +53,11 @@ msgstr ""
 msgid "Glyph"
 msgstr ""
 
-#: assets/js/icon-block.js:13 assets/js/icon-inline.js:90
+#: assets/js/icon-block.js:13
+msgid "Kunoichi Icon"
+msgstr ""
+
+#: assets/js/icon-inline.js:90
 msgid "Icon"
 msgstr ""
 
