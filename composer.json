@@ -28,7 +28,6 @@
     },
     "require": {
         "php": ">=7.4",
-        "kunoichi/bootstrapress": "^1.0.2",
         "hametuha/singleton-pattern": "^1.2"
     },
     "require-dev": {
