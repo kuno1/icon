@@ -36,27 +36,27 @@ class Manager extends Singleton {
 	 */
 	public function register_assets() {
 		// Register Iconset holders.
-		list( $url, $version ) = $this->get_path_to_url( 'dist/js/icon-holder.js' );
+		list( $url, $version ) = $this->get_path_to_url( 'assets/js/icon-holder.js' );
 		wp_register_script( 'kicon', $url, [ 'wp-i18n' ], $version, true );
 		wp_set_script_translations( 'kicon', 'kicon', self::dir() . '/languages' );
 		// Register Icon search.
-		list( $url, $version ) = $this->get_path_to_url( 'dist/js/icon-search.js' );
+		list( $url, $version ) = $this->get_path_to_url( 'assets/js/icon-search.js' );
 		wp_register_script( 'kicon-search', $url, [ 'wp-components', 'wp-element', 'kicon' ], $version, true );
 		// Register icon block.
-		list( $url, $version ) = $this->get_path_to_url( 'dist/js/icon-block.js' );
+		list( $url, $version ) = $this->get_path_to_url( 'assets/js/icon-block.js' );
 		wp_register_script( 'kicon-block', $url, [ 'kicon', 'wp-block-editor', 'wp-blocks', 'kicon-search' ], $version, true );
 		// Register inline icon.
-		list( $url, $version ) = $this->get_path_to_url( 'dist/js/icon-inline.js' );
+		list( $url, $version ) = $this->get_path_to_url( 'assets/js/icon-inline.js' );
 		wp_register_script( 'kicon-inline', $url, [ 'kicon', 'wp-block-editor', 'wp-rich-text', 'kicon-search' ], $version, true );
 		// Register Fontawesome 5
-		list( $url, $version ) = $this->get_path_to_url( 'dist/css/all.min.css' );
+		list( $url, $version ) = $this->get_path_to_url( 'assets/css/all.min.css' );
 		wp_register_style( 'fa5-all', $url, [], $version );
 		// Register Editor CSS.
-		list( $url, $version ) = $this->get_path_to_url( 'dist/css/icons.css' );
+		list( $url, $version ) = $this->get_path_to_url( 'assets/css/icons.css' );
 		wp_register_style( 'kicon', $url, [], $version );
-		list( $url, $version ) = $this->get_path_to_url( 'dist/css/icons-block.css' );
+		list( $url, $version ) = $this->get_path_to_url( 'assets/css/icons-block.css' );
 		wp_register_style( 'kicon-block', $url, [ 'kicon' ], $version );
-		list( $url, $version ) = $this->get_path_to_url( 'dist/css/icons-block-editor.css' );
+		list( $url, $version ) = $this->get_path_to_url( 'assets/css/icons-block-editor.css' );
 		wp_register_style( 'kicon-block-editor', $url, apply_filters( 'kunoichi_icon_dependencies', [ 'kicon' ] ), $version );
 
 	}

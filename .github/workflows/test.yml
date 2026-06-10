@@ -31,11 +31,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # TODO: ビルドツール近代化 (#12) 後に node 20 / npm run build へ更新する。
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '20'
 
       - name: Install NPM Packages
         run: npm install

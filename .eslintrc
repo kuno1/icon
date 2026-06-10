@@ -1,6 +1,22 @@
 {
+	"parserOptions": {
+		"ecmaVersion": 2018,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"env": {
+		"browser": true
+	},
 	"globals": {
+		"wp": false,
+		"React": false,
 		"jQuery": false
 	},
-	"extends": [ "plugin:@wordpress/eslint-plugin/recommended" ]
+	"extends": [ "plugin:@wordpress/eslint-plugin/recommended-with-formatting" ],
+	"rules": {
+		"object-shorthand": "off",
+		"@wordpress/i18n-ellipsis": "off"
+	}
 }
