@@ -46,7 +46,11 @@ msgstr "クラス名"
 msgid "Glyph"
 msgstr "グリフ"
 
-#: assets/js/icon-block.js:13 assets/js/icon-inline.js:90
+#: assets/js/icon-block.js:13
+msgid "Kunoichi Icon"
+msgstr "Kunoichi アイコン"
+
+#: assets/js/icon-inline.js:90
 msgid "Icon"
 msgstr "アイコン"
 

@@ -10,7 +10,7 @@ const { IconSelector } = wp.kicon;
 
 registerBlockType( 'kunoichi/icon', {
 
-	title: __( 'Icon', 'kicon' ),
+	title: __( 'Kunoichi Icon', 'kicon' ),
 
 	icon: 'flag',
 
